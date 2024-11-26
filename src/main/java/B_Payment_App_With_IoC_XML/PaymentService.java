@@ -7,10 +7,10 @@ public class PaymentService {
     public PaymentService() {
 
     }
-    // Constructor Injection
-//    public PaymentService(Ipayment payment) {
-//        this.payment = payment;
-//    }
+//  Constructor Injection
+    public PaymentService(Ipayment payment) {
+        this.payment = payment;
+    }
     // Setter Injection
     public void setPayment(Ipayment payment) {
         this.payment =  payment;
