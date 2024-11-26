@@ -1,5 +1,5 @@
-What is Dependency Injection?
-=============================
+A) What is Dependency Injection?
+   =============================
 The process of injecting dependent object into target object using target class variable  / setter method / constructor is called as Dependency Injection.
 Dependency Injection Types
 
@@ -21,8 +21,8 @@ What will happen when we perform both constructor & setter injections on same va
 
 Note ✅ : Setter Injection will override Constructor injection.
 
-What is IoC ?
-=============
+B) What is IoC ?
+   =============
 
 IOC: Inversion of Control
 
@@ -107,6 +107,35 @@ Creating First Spring Project
       <property name="payment" ref="debit" />
 
 Note ✅ : "ref" attribute represents which object should be injected.
+
+C) Spring Bean Scopes
+   ==================
+   
+-> Bean Scope will decide how many objs should be created for Spring Bean class.
+
+-> We have 4 types of scopes
+
+			1) singleton  (default)
+   
+			2) prototype
+   
+			3) request
+   
+			4) session
+   
+-> Singleton means only one object will be created.
+
+-> Prototype means every time new object will be created.
+
+Note ✅ : request & session scopes we will use in spring web mvc.
+
+       </beans>
+          <bean id="apache" class="C_BeanScope_Example.Apache" />
+          <bean id="glammer" class="C_BeanScope_Example.Glammer" />
+          <bean id="washpoint" class="C_BeanScope_Example.WashPoint" scope="prototype">
+          <constructor-arg ref="apache"/>
+      </bean>
+
   
    
 
