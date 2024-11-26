@@ -18,6 +18,100 @@ What will happen when we perform both constructor & setter injections on same va
 ========================================================================================
 
 -> First Constructor injection will happen then it will initialize the variable then setter injection will happen and it will re-initialize the same variable so final value be setter injection value.
-Note: Setter Injection will override Constructor injection.
+
+Note ✅ : Setter Injection will override Constructor injection.
+
+What is IoC ?
+=============
+
+IOC: Inversion of Control
+
+-> IOC is a principle which is used to manage and collaborate dependencies among the objects in the application.
+
+-> In Spring, IOC is responsible for Dependency Injection.
+
+![image](https://github.com/user-attachments/assets/2813047b-de96-4783-b61b-e73ebc4bfa48)
+
+Note ✅ : For IOC we need to pass Java Classes + Configuration as input then IOC will perform DI and it will produce Spring Beans.
+
+Spring Bean : The class which is managed by IOC is called as Spring Bean.
+
+How start IOC container?
+========================
+=> We can start in 2 ways 
+
+1) BeanFactory (I) (outdated)
+
+2) ApplicationContext (I) (recommended)
+
+ApplicationContext ctxt = new ClassPathXmlApplicationContext(String xmlFile)
+
+Creating First Spring Project
+============================
+
+1) Open any IDE
+
+2) Create Maven Project
+
+3) Open pom.xml file and add below dependency 👇
+
+              <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>6.1.6</version>
+             </dependency>
+
+
+ Note ✅ : After adding dependency verify project Maven Dependencies folder (jars should be displayed)
+ 
+ 4) Create Required Java classes.
+
+ 5) Create Bean Configuration File like below 👇 
+
+          <?xml version="1.0" encoding="UTF-8"?>
+          <beans xmlns="http://www.springframework.org/schema/beans"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+           http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+          <!-- bean definitions here -->
+          <bean id="credit" class="B_Payment_App_With_IoC_XML.CreditCard"/>
+          <bean id="debit" class="B_Payment_App_With_IoC_XML.DebitCard"/>
+          <bean id="sodexo" class="B_Payment_App_With_IoC_XML.SodexoCard"/>
+          <bean id="payment" class="B_Payment_App_With_IoC_XML.PaymentService">
+    
+          <!--Constructor Injection-->
+          <constructor-arg name="payment" ref="credit" />
+    
+          <!--Setter Injection-->
+         <property name="payment" ref="debit"/>
+        </bean>
+        </beans>
+
+ 6) Create Test Class and start IOC Container.
+
+        public class TestPaymentProcess {
+        public static void main(String[] args) {
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("Bean.xml");
+        PaymentService paymentService = context.getBean(PaymentService.class);
+        paymentService.pay(15000.00);
+         }
+        }
+
+@ Constructor Injection will be represented like below 👇
+
+      <constructor-arg name="payment" ref="credit" />
+      
+@ Setter Injection will be represented like below 👇
+
+      <property name="payment" ref="debit" />
+
+Note ✅ : "ref" attribute represents which object should be injected.
+  
+   
+
+
+
+
 
 
