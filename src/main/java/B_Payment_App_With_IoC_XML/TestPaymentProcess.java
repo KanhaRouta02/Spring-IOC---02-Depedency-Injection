@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class TestPaymentProcess {
     public static void main(String[] args) {
         ApplicationContext context =
-                new ClassPathXmlApplicationContext("Bean.xml");
+                new ClassPathXmlApplicationContext("PaymentApp.xml");
         PaymentService paymentService = context.getBean(PaymentService.class);
         paymentService.pay(15000.00);
     }
