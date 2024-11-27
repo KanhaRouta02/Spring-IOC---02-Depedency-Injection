@@ -135,6 +135,92 @@ Note ✅ : request & session scopes we will use in spring web mvc.
           <bean id="washpoint" class="C_BeanScope_Example.WashPoint" scope="prototype">
           <constructor-arg ref="apache"/>
       </bean>
+      
+D) Autowiring
+   ==========
+   
+=> Auto wiring is used to identify dependent objects and inject into target objects.
+
+=> Autowiring works based on below modes
+
+			1) byName
+   
+			2) byType
+   
+			3) constructor
+   
+			4) none
+   
+-> byName MODE will identify dependent bean based on variable name matching with bean id.
+
+-> byType MODE will identify dependent bean  based on variable data type.
+
+Note ✅ : There is a chance of getting ambiguity in byType mode.
+
+=> If variable data type is interface then we can have multiple implementation classes in this scenario IOC can't decide which bean it has to inject.
+
+=> We can resolve byType ambiguity in 2 ways
+
+		1) auto-wire-candiate="false" 
+		2) primary = "true"
+  
+E) Spring Annotations
+   ==================
+@Configuration : To represent java class as config class
+
+@Component : To represent java class as Spring Bean class
+
+@Service : To represent java class as Spring Bean class
+
+@Repository : To represent java class as Spring Bean class
+
+@Scope : To represent scope of spring bean (default : singleton)
+
+@Autowired : Inject dependent into target
+
+@Bean : To customize bean object creation
+
+@Qualifier : To identify bean based on the given name for DI
+
+@Primary : To give priority for the bean for auto wiring
+
+What is Component Scanning ?
+
+=> It is used to identify Spring Bean classes available in the Project.
+
+=> It will start scanning from current pacakge.
+
+F) Autowiring with Annotation
+   ==========================
+   
+=> To perform autowiring we will use @Autowired annotation.
+
+=> @Autowired annotation we can use at 3 places
+
+				1) variable level --- FI 
+				2) constructor level -- CI
+				3) setter method level – SI
+
+G) Spring Bean Life Cycle
+   ======================
+   
+=> The class which is managed by IOC is called as Spring Bean.
+
+=> We can perform some operations when bean object created and before bean object is removed.	
+
+				- post construct
+				- pre destory
+=> To achieve above requirement we can use bean life cycle methods.
+
+=> Bean Life cycle methods we can execute in 3 ways
+	
+	1) Declarative approach (xml)
+	2) Programmatic approach
+	3) Annotation approach
+
+
+
+     
 
   
    
